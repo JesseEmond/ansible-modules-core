@@ -435,6 +435,7 @@ def main():
     if region in ('us-east-1', '', None):
         # S3ism for the US Standard region
         location = Location.DEFAULT
+        region = 'us-east-1'
     else:
         # Boto uses symbolic names for locations but region strings will
         # actually work fine for everything except us-east-1 (US Standard)
@@ -484,7 +485,7 @@ def main():
         else:
             aws_connect_kwargs['is_secure'] = True
             try:
-                s3 = connect_to_aws(boto.s3, location, **aws_connect_kwargs)
+                s3 = connect_to_aws(boto.s3, region, **aws_connect_kwargs)
             except AnsibleAWSError:
                 # use this as fallback because connect_to_region seems to fail in boto + non 'classic' aws accounts in some cases
                 s3 = boto.connect_s3(**aws_connect_kwargs)
