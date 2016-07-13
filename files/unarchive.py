@@ -614,8 +614,6 @@ class TgzArchive(object):
             cmd.append('--owner=' + quote(self.file_args['owner']))
         if self.file_args['group']:
             cmd.append('--group=' + quote(self.file_args['group']))
-        if self.file_args['mode']:
-            cmd.append('--mode=' + quote(self.file_args['mode']))
         if self.module.params['keep_newer']:
             cmd.append('--keep-newer-files')
         if self.excludes:
@@ -663,8 +661,6 @@ class TgzArchive(object):
             cmd.append('--owner=' + quote(self.file_args['owner']))
         if self.file_args['group']:
             cmd.append('--group=' + quote(self.file_args['group']))
-        if self.file_args['mode']:
-            cmd.append('--mode=' + quote(self.file_args['mode']))
         if self.module.params['keep_newer']:
             cmd.append('--keep-newer-files')
         if self.excludes:
